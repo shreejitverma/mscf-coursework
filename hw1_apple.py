@@ -20,19 +20,20 @@ print('mean_of_3(1, 2, 3):', mean_of_3(1, 2, 3))
 print('\n---- Part 1 ----\n')
 
 def Fib(number):
-    n1 = 0 
-    n2 = 1
-    nn = 0
-    iteration = 0
-    if number == 0:
-        return 0
-    elif isinstance(number, int) and number >= 0:
+    
+    number_1 = 0
+    number_2 = 1
+    iteration = 1
+    
+    if number == 0 or number == 1:
+        return number
+    elif isinstance(number, int) and number > 1:
         while number > iteration:
-            nn = n1 + n2
-            n1 = n2
-            n2 = nn
+            next_number = number_1 + number_2
+            number_1 = number_2
+            number_2 = next_number
             iteration += 1
-        return n1
+        return next_number
     else:
         return "Please enter non-negative integers only!"
         
@@ -247,5 +248,18 @@ print('bool(0.0):',    bool(0.0))
 print("Prediction: False")
 
 #'''
+
+# Part 5
+
+# Choose a preference among IDLE, Spyder, and PyCharm
+
+'''
+Salintip's Preference
+I personally prefer Spyder more than the other two at this stage of coding. While PyCharm provides flexibility in switching between different 
+interpreters and a greater number of features, Spyder is much lighter with simple installation and faster programming. Spyder offers almost
+every package I need with just one installation, which is more intermediate-friendly than IDLE to play around with different libraries. As I
+move toward more advanced coding that requires cross-module functions, I will choose to use PyCharm with unique packages and folder organization.
+'''
+
 
 
