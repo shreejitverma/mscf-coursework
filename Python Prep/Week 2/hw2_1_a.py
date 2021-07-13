@@ -36,9 +36,15 @@ expenses = [
     '''284.23:util:20170323:Peoples Gas''',
     '''8.98:supply:20170325:Flair pens'''
     ]
+
 i = 1
 for ex in expenses:
-    print('{:4d}'.format(i), ' ', '{:>8s} {:>10s} {:10s} {:10s}'.format(*(ex.split(':'))))
+    print('{:4d}'.format(i), ' ', *(ex.split(':')))
+    i = i + 1
+
+i = 1
+for ex in expenses:
+    print('{:4d}'.format(i), ' ', '{:>8s} {:>10s} {:10s} {:s}'.format(*(ex.split(':'))))
     i = i + 1
 
 
