@@ -81,7 +81,7 @@ def median_val(lst):
     if n % 2 == 0:
         return (lst[n // 2] + lst[n // 2 - 1]) / 2
     else:
-        return lst[n//2]
+        return lst[n // 2]
 
 
 

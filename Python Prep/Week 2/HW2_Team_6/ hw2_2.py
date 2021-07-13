@@ -137,7 +137,7 @@ print(v3)
 o.	Create a variable t3 that refers to a tuple containing just the single item 4. 
     Display t3 when done.  (What should the output look like?) '''
 print('o.')
-t3 = (4,)
+t3 = (4,)  # t3 =(4) in this case t3 will be integer not a tuple
 print(t3)
 
 '''

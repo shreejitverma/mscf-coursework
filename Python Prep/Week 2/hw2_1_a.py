@@ -39,12 +39,17 @@ expenses = [
 
 i = 1
 for ex in expenses:
-    print('{:4d}'.format(i), ' ', *(ex.split(':')))
+    print('{:4d}'.format(i), ex)
     i = i + 1
-
+print()
 i = 1
 for ex in expenses:
-    print('{:4d}'.format(i), ' ', '{:>8s} {:>10s} {:10s} {:s}'.format(*(ex.split(':'))))
+    print('{:4d}'.format(i),'{:8s} {:10s} {:10s} {:s}'.format(*(ex.split(':'))))
+    i = i + 1
+print()
+i = 1
+for ex in expenses:
+    print('{:4d}'.format(i),'{:>8s} {:>10s} {:10s} {:s}'.format(*(ex.split(':'))))
     i = i + 1
 
 
