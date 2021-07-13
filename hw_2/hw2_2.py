@@ -17,7 +17,7 @@ v1.append(-3)
 print(f"v1: {v1} \n")
 
 print("e.")
-v2 = [3, ] * 5
+v2 = [3] * 5
 print(f"v2: {v2} \n")
 
 print("f.")
@@ -37,13 +37,14 @@ v3[2:2] = t1
 print(f"v3: {v3} \n")
 
 print("j.")
-v3.extend([i for i in range(1, 9, 2)])
+v3.extend(range(1, 9, 2))
 print(f"v3: {v3} \n")
 
 print("k.")
 p9 = v3.index(9)
 p2 = v3.index(2)
-del v3[p9:p2]
+for num in v3[p9:p2]:
+    v3.remove(num)
 print(f"v3: {v3} \n")
 
 print("l.")
@@ -62,7 +63,7 @@ for num in v3_copy:
 print(f"v3: {v3} \n")
 
 print("o.")
-t3 = (4)
+t3 = (4,)
 print(f"t3: {t3} \n")
 
 print("p.")
