@@ -1,6 +1,7 @@
 
 # File:      hw2_1_a.py
-# Author(s): 
+# Author(s): Shreejit Verma
+# Date: 12th July 2021
 
 expenses = [
     '''Amount:Category:Date:Description''',
@@ -35,7 +36,9 @@ expenses = [
     '''284.23:util:20170323:Peoples Gas''',
     '''8.98:supply:20170325:Flair pens'''
     ]
-
+i = 1
 for ex in expenses:
-    print(ex)
+    print('{:4d}'.format(i), ' ', '{:>8s} {:>10s} {:10s} {:10s}'.format(*(ex.split(':'))))
+    i = i + 1
+
 

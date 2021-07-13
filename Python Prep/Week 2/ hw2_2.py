@@ -230,11 +230,24 @@ print(s2ms1)
 
 '''
 
-aa.	Using a symbolic operator, create a set s1sds2 containing the symmetric difference (“exclusive or”) of s1 and s2.  Display s1sds2 when done.  Output may look like:
+aa.	Using a symbolic operator, 
+create a set s1sds2 containing the symmetric difference (“exclusive or”) of s1 and s2.  
+Display s1sds2 when done.  Output may look like:
 
-{0, 1, 3, 4, 5, 6, 8, 9, 10, -2}
+{0, 1, 3, 4, 5, 6, 8, 9, 10, -2}'''
+s1sds2 = s1 ^ s2
+print(s1sds2)
 
-bb.	Define a function are_disjoint(sa, sb) that takes references to two set objects as arguments, and that returns True if the two sets are disjoint, otherwise False.  Add these tests of your function in your code, below the function definition:
+'''
+
+bb.	Define a function are_disjoint(sa, sb) that takes references to two set objects as arguments, 
+and that returns True if the two sets are disjoint, otherwise False.  
+Add these tests of your function in your code, below the function definition:'''
+
+
+def are_disjoint(sa, sb):
+    return sa.isdisjoint(s2)
+
 
 print('s1us2 and s1is2 are disjoint?',
             are_disjoint(s1us2, s1is2))
@@ -244,39 +257,134 @@ print('s1us2 and s2ms1 are disjoint?',
             are_disjoint(s1us2, s2ms1))
 print('s1ms2 and s2ms1 are disjoint?',
             are_disjoint(s1ms2, s2ms1))
- 
-cc.	Add these print() function calls to your code, with appropriate tests added using symbolic set operators.  The first test is done for you; you will need to complete the rest.
+
+
+'''
+cc.	Add these print() function calls to your code, with appropriate tests added using symbolic set operators.  
+The first test is done for you; you will need to complete the rest.'''
 
 print('4 is an element of s1:', 4 in s1)
-print('3 is NOT an element of s2:', ... )
-print('s1is2 is a proper subset of s1us2:', ... )
+print('3 is NOT an element of s2:', 3 not in s2)
+print('s1is2 is a proper subset of s1us2:', s1is2.issubset(s1us2))
 print('the union of s1ms2 with s2ms1 is equal\n'
-      '    to s1us2 minus s1is2:', ... )
-
+      '    to s1us2 minus s1is2:', ((s1ms2 | s2ms1) == (s1us2 - s1is2)))
+'''
 dd.	Create an empty dict named c2count (“character to count”).  Display c2count when done.  Output should be:
 
-{}
+{}'''
 
-ee.	Define a function, str_to_c2count, that takes a reference to a str as its argument, and that returns a dict mapping from each one-character substring of the argument to the count of occurrences of that character.  Hint: recall the in operator for testing whether a key does or does not (yet) exist in a dict.  Test your str_to_c2count function with this code:
+c2count = {}
+print(c2count)
+
+'''
+
+ee.	Define a function, str_to_c2count, that takes a reference to a str as its argument,
+ and that returns a dict mapping from each one-character substring of the argument to 
+ the count of occurrences of that character.  
+ Hint: recall the in operator for testing whether a key does or does not (yet) exist in a dict.  
+ Test your str_to_c2count function with this code:
 
 ret = str_to_c2count('this is a test')
 print(ret)
 
 Output should be:
 
-{'t': 3, 'h': 1, 'i': 2, 's': 3, ' ': 3, 'a': 1, 'e': 1}
+{'t': 3, 'h': 1, 'i': 2, 's': 3, ' ': 3, 'a': 1, 'e': 1}'''
 
-ff.	Define a function, str_list_to_c2count, that takes a reference to a list-of-str as its argument, and that returns a dict mapping from each one-character substring of the argument to the count of occurrences of that character.  Test your str_list_to_c2count function with this code:
+result = {}
+def str_to_c2count(str):
+    for i in str:
+        if i in result:
+            result[i] = result[i] + 1
+        else:
+            result[i] = 1
+    return result
+
+
+ret = str_to_c2count('this is a test')
+print(ret)
+'''
+
+ff.	Define a function, str_list_to_c2count, that takes a reference to a list-of-str as its argument, 
+and that returns a dict mapping from each one-character substring of the argument to the count of occurrences of that character.  
+Test your str_list_to_c2count function with this code:
 
 ret = str_list_to_c2count(['hello', 'world'])
 print(ret)
 
 Output should be:
 
-{'h': 1, 'e': 1, 'l': 3, 'o': 2, 'w': 1, 'r': 1, 'd': 1}
- 
-gg.	Make a copy of the expenses list of str values from part 1 of this homework into your hw2_2.py file.  Test your str_list_to_c2count function with this code:
+{'h': 1, 'e': 1, 'l': 3, 'o': 2, 'w': 1, 'r': 1, 'd': 1}'''
+
+result = {}
+
+
+def str_list_to_c2count(lst):
+    for s in lst:
+        for i in s:
+            if i in result:
+                result[i] = result[i] + 1
+            else:
+                result[i] = 1
+    return result
+
+
+ret = str_list_to_c2count(['hello', 'world'])
+print(ret)
+'''
+gg.	Make a copy of the expenses list of str values from part 1 of this homework into your hw2_2.py file. 
+Test your str_list_to_c2count function with this code:
 
 ret = str_list_to_c2count(expenses)
 print(ret)
 '''
+expenses = [
+    '''Amount:Category:Date:Description''',
+    '''5.25:supply:20170222:box of staples''',
+    '''79.81:meal:20170222:lunch with ABC Corp. clients Al, Bob, and Cy''',
+    '''43.00:travel:20170222:cab back to office''',
+    '''383.75:travel:20170223:flight to Boston, to visit ABC Corp.''',
+    '''55.00:travel:20170223:cab to ABC Corp. in Cambridge, MA''',
+    '''23.25:meal:20170223:dinner at Logan Airport''',
+    '''318.47:supply:20170224:paper, toner, pens, paperclips, tape''',
+    '''142.12:meal:20170226:host dinner with ABC clients, Al, Bob, Cy, Dave, Ellie''',
+    '''303.94:util:20170227:Peoples Gas''',
+    '''121.07:util:20170227:Verizon Wireless''',
+    '''7.59:supply:20170227:Python book (used)''',
+    '''79.99:supply:20170227:spare 20" monitor''',
+    '''49.86:supply:20170228:Stoch Cal for Finance II''',
+    '''6.53:meal:20170302:Dunkin Donuts, drive to Big Inc. near DC''',
+    '''127.23:meal:20170302:dinner, Tavern64''',
+    '''33.07:meal:20170303:dinner, Uncle Julio's''',
+    '''86.00:travel:20170304:mileage, drive to/from Big Inc., Reston, VA''',
+    '''22.00:travel:20170304:tolls''',
+    '''378.81:travel:20170304:Hyatt Hotel, Reston VA, for Big Inc. meeting''',
+    '''1247.49:supply:20170306:Dell 7000 laptop/workstation''',
+    '''6.99:supply:20170306:HDMI cable''',
+    '''212.06:util:20170308:Duquesne Light''',
+    '''23.86:supply:20170309:Practical Guide to Quant Finance Interviews''',
+    '''195.89:supply:20170309:black toner, HP 304A, 2-pack''',
+    '''86.00:travel:20170317:mileage, drive to/from Big Inc., Reston, VA''',
+    '''32.27:meal:20170317:lunch at Clyde's with Fred and Gina, Big Inc.''',
+    '''22.00:travel:20170317:tolls''',
+    '''119.56:util:20170319:Verizon Wireless''',
+    '''284.23:util:20170323:Peoples Gas''',
+    '''8.98:supply:20170325:Flair pens'''
+    ]
+
+
+
+
+def str_list_to_c2count(string):
+    i = 1
+    final_lst = []
+    for ex in string:
+        final_lst.append(ex.split(':'))
+        i = i + 1
+    for i in range(0, len(final_lst)):
+        final_lst[i] = float(final_lst[i])
+    return result
+
+ret = str_list_to_c2count(expenses)
+print(ret)
+
