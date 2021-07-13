@@ -47,7 +47,7 @@ final_lst = final_lst[1:]
 for i in range(0, len(final_lst)):
     final_lst[i] = float(final_lst[i])
 
-#print(final_lst)
+print(final_lst)
 num = 0
 def num_of_vals(lst):
     return len(final_lst)
@@ -61,48 +61,39 @@ def sum_of_vals(lst):
 
 
 def mean_val(lst):
-    mean = 0
-    sum = 0.0
-    for i in lst:
-        sum += i
-    mean = sum/len(lst)
-    return mean
-
+    return sum_of_vals(lst)/num_of_vals(lst)
 
 
 def stdev_of_vals(lst):
-    stdev = 0.0
     var = 0.0
-    mean = 0.0
-    sum = 0.0
-    n = len(lst)
+    n = num_of_vals(lst)
+    mean = mean_val(lst)
     for i in lst:
-        sum += i
-    mean = sum / n
-    for i in lst:
-        var += (((i -mean)**2)/n)
+        var += (((i -mean)**2)/(n-1))
     stdev = math.sqrt(var)
-    return stdev
+    return '{:.2f}'.format(stdev)
+
 
 def median_val(lst):
     n = len(lst)
     lst.sort()
-    return lst[int(n/2)]
+    if n % 2 == 0:
+        return '{:.2f}'.format((lst[n // 2] + lst[n // 2 - 1])/ 2)
+    else:
+        return '{:.2f}'.format(lst[n//2])
 
 
 
 def min_max_vals(lst):
-    min_max = (0, 0)
     lst.sort()
-    min_max = (lst[0], lst[len(lst)-1])
-    return min_max
+    return (lst[0], lst[-1])
 
 print('Num of values:', num_of_vals(final_lst))
 print('Sum of values:', sum_of_vals(final_lst))
-print('Mean value:',mean_val(final_lst))
+print('Mean value:', mean_val(final_lst))
 print('Std Deviation:', stdev_of_vals(final_lst))
-print('Median value:',median_val(final_lst))
-print('Minimum value:',min_max_vals(final_lst)[0] )
+print('Median value:', median_val(final_lst))
+print('Minimum value:', min_max_vals(final_lst)[0])
 print('Maximum value:', min_max_vals(final_lst)[1])
 
 
