@@ -93,17 +93,11 @@ class BinaryTree:
                 return depth_r + 1
 
     def __eq__(self, other):
-        return self.__eq__help(self._top, other._top)
-
-    def __eq__help(self, node_p, node_q):
-        if not node_p and not node_q:
+        if self.__str__() == other.__str__():
             return True
-        if not node_p or not node_q:
+        else:
             return False
-        if node_p._value != node_q._value:
-            return False
-        return self.__eq__help(node_p._left, node_q._left) and self.__eq__help(node_p._right, node_q._right)
-
+        
     def min(self):
         if self._top is None:
             return None
