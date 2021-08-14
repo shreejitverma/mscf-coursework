@@ -72,9 +72,9 @@ class BinaryTree:
 
     def _print_pretty(self, cur_node, level=0):
         if cur_node != None:
-            self._print_pretty(cur_node._left, level + 1)
-            print(' ' * 4 * level, cur_node._value)
             self._print_pretty(cur_node._right, level + 1)
+            print(' ' * 4 * level, cur_node._value)
+            self._print_pretty(cur_node._left, level + 1)
 
     def depth(self):
         return self._depth(self._top)
