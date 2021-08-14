@@ -73,7 +73,7 @@ class BinaryTree:
     def _print_pretty(self, cur_node, level=0):
         if cur_node != None:
             self._print_pretty(cur_node._right, level + 1)
-            print(' ' * 4 * level, cur_node._value)
+            print(' ' * 8 * level, cur_node._value)
             self._print_pretty(cur_node._left, level + 1)
 
     def depth(self):
@@ -97,40 +97,22 @@ class BinaryTree:
             return True
         else:
             return False
-        
+
     def min(self):
         if self._top is None:
             return None
-        return self._min(self._top)
-
-    def _min(self, cur_node):
-        if cur_node is None:
-            return float('inf')
-        final = cur_node._value
-        left_final = self._min(cur_node._left)
-        right_final = self._min(cur_node._right)
-        if left_final < final:
-            final = left_final
-        if right_final < final:
-            final = right_final
-        return final
+        cur_node = self._top
+        while cur_node._left:
+            cur_node = cur_node._left
+        return cur_node._value
 
     def max(self):
         if self._top is None:
             return None
-        return self._max(self._top)
-
-    def _max(self, cur_node):
-        if cur_node is None:
-            return float('-inf')
-        final = cur_node._value
-        left_final = self._max(cur_node._left)
-        right_final = self._max(cur_node._right)
-        if (left_final > final):
-            final = left_final
-        if (right_final > final):
-            final = right_final
-        return final
+        cur_node = self._top
+        while cur_node._right:
+            cur_node = cur_node._right
+        return cur_node._value
 
     def mean(self):
         if self._top is None:
